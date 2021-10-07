@@ -1,24 +1,39 @@
 <html>
   <head>
-    <title>Excercise 1 training</title>
+    <title>Es 1</title>
   </head>
-  <body id="body1">
-    <h1>Es1</h1>
-    <p>
-      Pagina html statica, includi un file javascript, aggiungi un bottone,
-      aggiungi un click listener al bottone che cambia il contenuto di un tag
-      span e il contenuto e colore di un div.
-    </p>
-    
-    <span id="span1">C'è un bottone:</span>
-    
-    <div id="div1" style="background-color: rgb(41, 255, 87)">
-      <h2>Non premere il bottone!</h2>
-      <p>Ti ho detto di non premere il maledetto bottone!!</p>
-    </div>
+    <body>
+      <button onclick= "console.log('click da evento')">cliccami da evento</button>
+      <button onclick ="funzioneClick('script')">cliccami script</button>
+      <div id="div1">
+        <p>Non premere per cortesia</p>
+      </div>
+      <button id="btn3">cliccami da listener</button>
 
-    <br /><br />
+      <script>
+        //Dichiarare una funzione e la richiamo allo stesso tempo
+        // var funzioneClick = function(){
+        //   console.log("click da script");
+        // };
 
-    <script src="es1.js"></script>
-  </body>
-</html>
+        var funzioneClick = function(stringa){
+          console.log("click da "+ stringa);
+        };
+        var on=true;
+        //Prendo il bottne in una variabile
+        var bottone3 = document.getElementById("btn3");
+        bottone3.addEventListener("click", function(){
+          funzioneClick("listener")
+          
+          var div1 = document.getElementById("div1");
+          div1.setAttribute("style", "background-color : pink")
+          div1.innerHTML = "<h1>TI AVEVO DETTO DI NON CLICCARE MONA.</h1>"
+
+          if (on) {
+            bottone3.setAttribute("style","background-color: red");
+          }
+        }
+        );
+      </script>
+    </body>
+</html> 
